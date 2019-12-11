@@ -46,7 +46,11 @@ export default (apiUrl, httpClient = fetchJson) => {
                         query['skip'] = (page - 1) * perPage;
                     }
                 }
-                url = `${apiUrl}/${resource}?${queryParameters({filter: JSON.stringify(query)})}`;
+                let queryParams = {filter: JSON.stringify(query)}
+                if (params.fields){
+                    queryParams.fields = params.fields
+                }
+                url = `${apiUrl}/${resource}?${queryParameters(queryParams)}`;
                 break;
             }
             case GET_ONE:
