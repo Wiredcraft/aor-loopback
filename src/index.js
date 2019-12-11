@@ -48,7 +48,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 }
                 let queryParams = {filter: JSON.stringify(query)}
                 if (params.fields){
-                    queryParams.fields = params.fields
+                    queryParams.fields = JSON.stringify(params.fields)
                 }
                 url = `${apiUrl}/${resource}?${queryParameters(queryParams)}`;
                 break;
